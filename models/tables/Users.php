@@ -45,4 +45,22 @@ class Users extends \yii\db\ActiveRecord
             'email' => 'Email',
         ];
     }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'username' => 'login',
+            'password'
+        ];
+    }
+
+
+    public static function getUsersList()
+    {
+        return static::find()
+            ->select(['login'])
+            ->indexBy('id')
+            ->column();
+    }
 }
